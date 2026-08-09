@@ -1,0 +1,25 @@
+{
+ "W": {
+  "D_within": 0.0,
+  "D_between": 0.0,
+  "D": 0.0
+ },
+ "W_payload_hashes_identical": true,
+ "WC": {
+  "D_within": 0.005919927019373452,
+  "D_between": 0.0667083777229722,
+  "D": 0.06078845070359874
+ },
+ "WM": {
+  "D_within": 0.008811729455067963,
+  "D_between": 0.05345949404310945,
+  "D": 0.04464776458804148
+ },
+ "WTTT": {
+  "D_within": 0.012430842183290259,
+  "D_between": 0.025725417629700882,
+  "D": 0.013294575446410623
+ },
+ "positive_control_effect": 0.013294575446410623,
+ "W_equivalent_to_baseline": true
+}
