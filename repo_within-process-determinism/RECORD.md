@@ -5,9 +5,17 @@ estimate was the most misleading one*, and that claim is only evidenced by the
 sequence in which the estimates were made. Reporting the final figure alone would
 not support it.
 
-**⚠️ Dates below are from file modification times and the working log. Verify
-against your own records before publishing — a wrong date here is worse than no
-date.**
+**On the dates below.** Stage 5 carries ISO timestamps written by the measurement
+scripts themselves; they are inside `data/determinism_control.jsonl` and
+`data/reload_probe.jsonl` and can be checked by any reader. Stages 1-4 produced
+artefacts that do not embed a timestamp, so their dates are reconstructed from file
+modification times and the working log and are given to the day only as an
+approximation.
+
+What §3.2 of the note relies on is the **order** of the estimates - 2%, then 10.6%,
+then a spread of exactly zero, then 22.5% - not the calendar. That order is fixed by
+the artefacts: each stage's script consumes the previous stage's output or adds the
+flag the previous stage's failure motivated. The dates are context, not evidence.
 
 ---
 
@@ -22,7 +30,7 @@ larger than 2% were called real.
 **What was wrong:** two measurements cannot estimate a spread. More importantly,
 both were taken in a way that did not vary the factor that actually mattered.
 
-Artefact: `data/e1_results.json` (2026-07-29)
+Artefact: `data/e1_results.json` (reconstructed date 2026-07-29)
 
 ---
 
@@ -46,7 +54,7 @@ Conclusion recorded at the time:
 `--wc-repeats` (default 3) was added so that the reference condition is repeated
 and its observed spread used as the floor.
 
-Artefacts: `data/e1_ttt_sweep.json` (2026-07-30), `code/e1_perturbation_matched.py`
+Artefacts: `data/e1_ttt_sweep.json` (reconstructed date 2026-07-30), `code/e1_perturbation_matched.py`
 
 **What was still wrong:** the revision increased the *magnitude* of the floor but
 did not change the *model of the variation*. Both estimates were of the wrong
@@ -76,7 +84,7 @@ within-process repetition estimates within-process variation; it cannot see
 across-process variation by construction, and it reports the absence with maximal
 confidence.
 
-Artefact: `data/e1_perturbation_matched.json` (2026-07-31)
+Artefact: `data/e1_perturbation_matched.json` (reconstructed date 2026-07-31)
 
 ---
 
@@ -124,7 +132,7 @@ compatible with local exponents varying by a factor of two.
 
 ## Stage 5 — the controls that could have overturned the diagnosis, and did not
 
-**Determinism switches** (2026-08-02, `data/determinism_control.jsonl`): six fresh
+**Determinism switches** (2026-08-02, timestamped in `data/determinism_control.jsonl`: six runs between 06:16 and 09:28 UTC): six fresh
 processes, three with `torch.use_deterministic_algorithms(True)`,
 `cudnn.deterministic = True`, `cudnn.benchmark = False`, TF32 disabled and
 `CUBLAS_WORKSPACE_CONFIG=:4096:8` exported before interpreter start.
@@ -138,7 +146,7 @@ We do **not** claim the flags helped: a range statistic over three points is
 extremely unstable. The supported claim is that the across-process variation is not
 zero with the flags on.
 
-**Reload probe** (2026-08-02, `data/reload_probe.jsonl`): four independent model
+**Reload probe** (2026-08-02, timestamped in `data/reload_probe.jsonl`: 13:04 and 14:15 UTC): four independent model
 loads per process, two processes. Every measurement within a process was
 bit-identical across all four loads; across processes the spread was 14.52%. The
 differing state is therefore established at process or CUDA-context initialisation,

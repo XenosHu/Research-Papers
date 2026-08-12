@@ -91,8 +91,8 @@ than a location.
   title  = {Within-Process Determinism Is Not Reproducibility: A Measurement
             Hazard in Behavioural Comparison of Language Models},
   year   = {2026},
-  note   = {arXiv preprint},
-  url    = {TODO: arXiv URL once assigned}
+  note   = {Preprint. arXiv identifier to be added on announcement;
+            this entry is updated in place once assigned.}
 }
 ```
 
